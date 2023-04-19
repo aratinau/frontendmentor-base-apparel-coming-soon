@@ -1,0 +1,260 @@
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
+
+:root {
+    /* colors */
+    --desatured-red: 0, 36%, 70%;
+    --soft-red: 0, 93%, 68%;
+
+    --dark-grayish-red: 0, 6%, 24%;
+
+    /* font-sizes */
+    --fs-900: 9.375rem;
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-500: 1.75rem;
+    --fs-400: 1.125rem;
+    --fs-300: 1rem;
+    --fs-200: 0.875rem;
+
+    /* font-families */
+    --ff-sans-normal: 'Josefin Sans', sans-serif;
+}
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: 400;
+}
+
+/* set up the body */
+body {
+    font-family: var(--ff-sans-normal);
+    font-size: var(--fs-300);
+    min-height: 100vh;
+}
+
+/* make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ------------------- */
+/* Utility classes     */
+/* ------------------- */
+
+/* general */
+
+.flex {
+    display: flex;
+}
+
+body {
+}
+
+.container {
+    background-image: url("./images/bg-pattern-desktop.svg");
+
+    max-width: 1440px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.d-flex {
+    display: flex;
+}
+
+img[src*="images/logo.svg"] {
+    width: 150px;
+}
+
+h1 {
+    font-size: 5rem;
+    line-height: 1;
+    text-transform: uppercase;
+}
+p {
+    color: hsl(var(--desatured-red));
+    font-weight: 400;
+}
+
+.thin {
+    color: hsl(var(--desatured-red));
+    font-weight: 300;
+}
+.regular {
+    font-weight: 400;
+    font-size: min(3em, 8vw);
+}
+
+footer {
+    text-align: center;
+    padding: 2em;
+}
+
+/* ------------------- */
+/* Form                */
+/* ------------------- */
+.form-group {
+    display: flex;
+    position: relative;
+    flex-flow: row wrap;
+}
+input {
+    border-radius: 50px;
+    border: 1px solid hsl(var(--desatured-red));
+    padding: 15px 18px;
+    display: inline-block;
+    width: 100%;
+}
+input:focus {
+    outline: none;
+}
+input:invalid {
+    outline: 2px solid hsl(var(--soft-red));
+    border: 1px solid transparent;
+}
+.btn {
+    border-radius: 50px;
+    outline: 0;
+    border: 1px solid hsl(var(--desatured-red));
+    background-image: linear-gradient(
+            to right top,
+            hsl(0, 80%, 86%),
+            hsl(0, 74%, 74%)
+    );
+    width: 5rem;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+}
+button {
+    padding: 15px 18px;
+}
+button:hover {
+    cursor:pointer;
+    box-shadow : .3rem .3rem 1.5em 0em hsl(var(--dark-grayish-red));
+}
+button img {
+    margin: 0 auto;
+}
+button:active {
+    background-image: linear-gradient(
+            to right top,
+            hsl(0, 0%, 100%),
+            hsl(0, 100%, 98%)
+    );
+}
+.error-message {
+    visibility: hidden;
+    font-weight: 300;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    color: hsl(var(--soft-red));
+}
+input:invalid ~ .error-message {
+    visibility: visible;
+}
+
+.block-info {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.picture-mobile {
+    display: block;
+}
+
+.picture-desktop {
+    display: none;
+}
+.container {
+    height: 100vh;
+}
+.wrapper {
+    height: 100vh;
+    align-content: space-around;
+    padding: 3em;
+}
+
+img[src*="images/hero-mobile.jpg"] {
+    max-width: none;
+    width: 100%;
+}
+
+
+@media (min-width: 850px) {
+    .wrapper {
+        padding: 0;
+    }
+    .block-info {
+        padding: 5em;
+    }
+    .picture-mobile {
+        display: none;
+    }
+    .picture-desktop {
+        display: block;
+    }
+    img[src*="images/hero-desktop.jpg"] {
+        max-width: none;
+        height: 100vh;
+    }
+}
